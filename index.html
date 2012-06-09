@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>title</title>
+<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+<script language="JavaScript" src="timbre.js"></script>
+<script type="text/javascript">
+  $(function(){
+    osc = T("osc", wave="sin", freq=440, mul=1, add=0);
+    osc.play();
+
+    // Slider
+    $("#freqslider").slider({
+      value: 440,
+      min: 50,
+      max: 1200,
+      slide: function(event, ui) {
+        freq = ui.value
+        $("#freq").val(freq + "Hz");
+        osc.freq.value = freq;
+      }
+    });
+    $("#freq").val($("#freqslider").slider("value"));
+  });
+  </script>
+</head>
+<body>
+</head>
+<body>
+Timbreで音を出す
+
+<p>
+  <label for="freq">Freq:</label>
+  <input type="text" id="freq" style="border:0; color:#f6931f; font-weight:bold;" />
+</p>
+
+<div id="freqslider"></div>
+
+</body>
+</html>
+
+
